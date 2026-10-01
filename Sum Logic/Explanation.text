@@ -1,0 +1,522 @@
+SPY NUMBER PROGRAM – COMPLETE EXPLANATION
+==========================================
+
+Definition:
+A number is called a Spy Number when the SUM of its digits is equal to
+the PRODUCT of its digits.
+
+Example:
+123
+
+Sum of digits = 1 + 2 + 3 = 6
+Product of digits = 1 × 2 × 3 = 6
+
+Since Sum == Product,
+123 is a Spy Number.
+
+
+PROGRAM:
+--------
+
+public class SpyNumber {
+
+    public static void main(String[] args){
+
+        int Num = 123;
+        int Temp = Num;
+        int Sum = 0;
+        int Product = 1;
+
+        while(Num != 0){
+
+            int Digit = Num % 10;
+
+            Sum = Sum + Digit;
+            Product = Product * Digit;
+
+            Num = Num / 10;
+        }
+
+        if(Sum == Product){
+
+            System.out.println(Temp + " is spy number");
+        }
+
+        else{
+
+            System.out.println(Temp + " is not spy number");
+        }
+    }
+}
+
+
+STEP-BY-STEP EXPLANATION:
+=========================
+
+
+1. int Num = 123;
+
+This stores the number 123 in the variable Num.
+
+Num = 123
+
+
+2. int Temp = Num;
+
+We create another variable Temp and store the original number in it.
+
+Temp = Num
+Temp = 123
+
+Why do we need Temp?
+
+Because inside the while loop we keep dividing Num by 10.
+
+At the end of the loop:
+
+Num becomes 0.
+
+Therefore, if we print Num at the end, it will print 0.
+
+So we keep the original number safely inside Temp.
+
+Temp = 123
+
+
+3. int Sum = 0;
+
+This variable stores the SUM of all digits.
+
+We start Sum with 0 because we will keep adding digits to it.
+
+Sum = 0
+
+
+4. int Product = 1;
+
+This variable stores the PRODUCT of all digits.
+
+We start Product with 1 because 1 is the multiplication identity.
+
+For example:
+
+1 × 3 = 3
+3 × 2 = 6
+6 × 1 = 6
+
+If we started Product with 0:
+
+0 × 3 = 0
+0 × 2 = 0
+0 × 1 = 0
+
+The product would always remain 0.
+
+Therefore:
+
+Product = 1
+
+
+5. while(Num != 0)
+
+This loop runs until Num becomes 0.
+
+The purpose of this loop is to take out one digit at a time from the number.
+
+For:
+
+Num = 123
+
+The digits will be taken from right to left:
+
+3 → 2 → 1
+
+
+6. int Digit = Num % 10;
+
+The % operator gives the REMAINDER.
+
+When we divide a number by 10, the remainder gives us the last digit.
+
+Example:
+
+123 % 10 = 3
+
+So:
+
+Digit = 3
+
+
+After that:
+
+12 % 10 = 2
+
+So:
+
+Digit = 2
+
+
+And:
+
+1 % 10 = 1
+
+So:
+
+Digit = 1
+
+
+Therefore, Num % 10 is used to extract the last digit.
+
+
+7. Sum = Sum + Digit;
+
+This adds the extracted digit to Sum.
+
+First digit:
+
+Sum = 0
+Digit = 3
+
+Sum = 0 + 3
+Sum = 3
+
+
+Second digit:
+
+Sum = 3
+Digit = 2
+
+Sum = 3 + 2
+Sum = 5
+
+
+Third digit:
+
+Sum = 5
+Digit = 1
+
+Sum = 5 + 1
+Sum = 6
+
+
+Final Sum:
+
+Sum = 6
+
+
+8. Product = Product * Digit;
+
+This multiplies the extracted digit with Product.
+
+First digit:
+
+Product = 1
+Digit = 3
+
+Product = 1 × 3
+Product = 3
+
+
+Second digit:
+
+Product = 3
+Digit = 2
+
+Product = 3 × 2
+Product = 6
+
+
+Third digit:
+
+Product = 6
+Digit = 1
+
+Product = 6 × 1
+Product = 6
+
+
+Final Product:
+
+Product = 6
+
+
+9. Num = Num / 10;
+
+This removes the last digit from Num.
+
+Because Num is an integer, integer division is performed.
+
+First:
+
+Num = 123
+
+123 / 10 = 12
+
+So:
+
+Num = 12
+
+
+Second:
+
+Num = 12
+
+12 / 10 = 1
+
+So:
+
+Num = 1
+
+
+Third:
+
+Num = 1
+
+1 / 10 = 0
+
+So:
+
+Num = 0
+
+
+Now:
+
+Num != 0
+
+becomes:
+
+0 != 0
+
+which is FALSE.
+
+Therefore, the while loop stops.
+
+
+COMPLETE LOOP TRACE:
+====================
+
+Starting values:
+
+Num = 123
+Temp = 123
+Sum = 0
+Product = 1
+
+
+ITERATION 1:
+------------
+
+Num = 123
+
+Digit = Num % 10
+Digit = 123 % 10
+Digit = 3
+
+Sum = Sum + Digit
+Sum = 0 + 3
+Sum = 3
+
+Product = Product * Digit
+Product = 1 * 3
+Product = 3
+
+Num = Num / 10
+Num = 123 / 10
+Num = 12
+
+
+After iteration 1:
+
+Num = 12
+Temp = 123
+Sum = 3
+Product = 3
+
+
+ITERATION 2:
+------------
+
+Num = 12
+
+Digit = Num % 10
+Digit = 12 % 10
+Digit = 2
+
+Sum = Sum + Digit
+Sum = 3 + 2
+Sum = 5
+
+Product = Product * Digit
+Product = 3 * 2
+Product = 6
+
+Num = Num / 10
+Num = 12 / 10
+Num = 1
+
+
+After iteration 2:
+
+Num = 1
+Temp = 123
+Sum = 5
+Product = 6
+
+
+ITERATION 3:
+------------
+
+Num = 1
+
+Digit = Num % 10
+Digit = 1 % 10
+Digit = 1
+
+Sum = Sum + Digit
+Sum = 5 + 1
+Sum = 6
+
+Product = Product * Digit
+Product = 6 * 1
+Product = 6
+
+Num = Num / 10
+Num = 1 / 10
+Num = 0
+
+
+After iteration 3:
+
+Num = 0
+Temp = 123
+Sum = 6
+Product = 6
+
+
+10. if(Sum == Product)
+
+Now the loop is finished.
+
+We compare:
+
+Sum = 6
+Product = 6
+
+Condition:
+
+Sum == Product
+
+6 == 6
+
+This is TRUE.
+
+Therefore, the if block executes.
+
+
+11. System.out.println(Temp + " is spy number");
+
+We use Temp instead of Num.
+
+Why?
+
+Because:
+
+Temp = 123
+
+but after the loop:
+
+Num = 0
+
+So if we wrote:
+
+System.out.println(Num + " is spy number");
+
+the output would be:
+
+0 is spy number
+
+which is incorrect.
+
+Therefore, we use:
+
+Temp
+
+The output is:
+
+123 is spy number
+
+
+FINAL OUTPUT:
+============
+
+123 is spy number
+
+
+IMPORTANT CONCEPTS:
+===================
+
+1. Num % 10
+   → Gets the last digit.
+
+   Example:
+   123 % 10 = 3
+
+
+2. Num / 10
+   → Removes the last digit.
+
+   Example:
+   123 / 10 = 12
+
+
+3. Sum = Sum + Digit
+   → Adds all digits.
+
+   For 123:
+   1 + 2 + 3 = 6
+
+
+4. Product = Product * Digit
+   → Multiplies all digits.
+
+   For 123:
+   1 × 2 × 3 = 6
+
+
+5. Temp = Num
+   → Stores the original number because Num becomes 0
+     after the loop.
+
+
+6. Product starts from 1
+   → Because starting multiplication from 1 does not change
+     the value.
+
+   1 × 3 = 3
+   3 × 2 = 6
+   6 × 1 = 6
+
+
+7. A Spy Number:
+   Sum of digits = Product of digits
+
+
+For 123:
+
+Sum = 1 + 2 + 3
+    = 6
+
+Product = 1 × 2 × 3
+        = 6
+
+Therefore:
+
+Sum == Product
+
+6 == 6
+
+TRUE
+
+So:
+
+123 is a Spy Number.
